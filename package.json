@@ -6,14 +6,21 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
+    "build:start": "yarn build && yarn start",
     "dev": "next dev",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e:run": "cypress run",
+    "test:e2e:open": "cypress open",
+    "test:e2e": "start-server-and-test build:start http-get://localhost:3000 test:e2e:run",
+    "test:e2e:dev": "start-server-and-test dev http-get://localhost:3000 test:e2e:open"
   },
   "dependencies": {
+    "cypress": "^9.6.0",
     "jest-environment-jsdom": "^28.0.2",
     "next": "^12.1.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "start-server-and-test": "^1.14.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
